@@ -1,0 +1,86 @@
+class Node{
+	int data;
+	Node next;
+	Node(int data){
+		this.data = data;
+		this.next = null;
+	}
+	// e.g. 5->null
+}
+
+class LinkedList{
+	Node head;	
+	
+	public void add(int data){
+		//1. to check head is null
+		//2. if head is not null
+		
+		Node newNode = new Node(data);
+		
+		if(head == null){
+			head = newNode;
+			return;
+		}
+		
+		//e.g. 5->6->7->null
+		//ans: 5->6->7->5->null
+		Node temp = head;
+		while(temp.next != null){
+			temp = temp.next;
+		}
+		temp.next = newNode;
+	}
+	
+	public void remove(int data){
+		//1. if head is null
+		//2. if you want to remove head 
+		//3. if you want to remove other than head
+		
+		if(head == null)return;
+		
+		if(head.data == data){
+			head = head.next;
+			return;
+		}
+		
+		//e.g. 5->6->7->null
+		//ans: 5->7->null
+		Node temp = head;
+		while(temp.next != null && temp.next.data != data){
+			temp = temp.next;
+		}
+		if(temp.next != null){
+			temp.next = temp.next.next;
+		}
+	}
+	
+	public void display(){
+		//1. check if head is null
+		//2. if head is not null then..
+		if(head == null) return;
+		Node temp = head;
+		// e.g. 5->6->7->null
+		while(temp != null){
+			System.out.print(temp.data+"->");
+			temp = temp.next;
+		}
+		System.out.println();
+	}
+}
+
+public class Main {
+	public static void main(String[] args) {
+		LinkedList ll = new LinkedList();
+		ll.add(5);
+		ll.display();
+		ll.add(6);
+		ll.display();
+		ll.add(7);
+		ll.display();
+		ll.remove(6);
+		ll.display();
+		ll.remove(5);
+		ll.display();
+	}
+}
+
