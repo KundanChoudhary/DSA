@@ -3,11 +3,11 @@ class Solution {
         int row = matrix.length;
         int column = matrix[0].length;
         int low = 0;
-        int high = (row*column) - 1;
+        int high = (row*column) - 1;      // convert 2D array length into 1D array
 
         while(low<=high){
-            int mid = (high + low) / 2;    // mid = 5
-            int midValue = matrix[(mid/column)][(mid%column)];
+            int mid = low + (high-low) / 2;    // mid = 5
+            int midValue = matrix[(mid/column)][(mid%column)];   // As mid we have 1D array result we have to convert it into 2D array. 
             if(midValue == target ){
                 return true;
             }
