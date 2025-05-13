@@ -1,24 +1,24 @@
 class MinStack {
     
     Stack stack;
-    int min = Integer.MAX_VALUE;
+    int min = Integer.MAX_VALUE;   // initialise min with the higest value
     public MinStack() {
       stack = new Stack();
     }
     
-    public void push(int val) {
+    public void push(int val) {    
         if(min < val){
           stack.push(val);
         }
-        else{
+        else{        // if min >= val then first push min as it is bigger then val and later push val as well because in minstack lowwer element should be on the top of the stack
             stack.push(min);
             min = val;
-            stack.push(val);
+            stack.push(val);     
         }
     }
 
 
-    public void pop() {
+    public void pop() {   // pop twice if it is equal to min because we need to update min with previous min value.
         if((int)stack.pop() == min){
             min = (int)stack.pop();
         }
